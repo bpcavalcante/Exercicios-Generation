@@ -10,37 +10,9 @@ public class Exercicio4 {
 		int idade,pessoas = 1, sexo , psicologico = 0, numeroCalmos = 0,mulheresNervosas = 0,homensAgressivo = 0,outrosCalmos = 0,
 				quarentaNervosos = 0, dezoitoCalmos = 0;
 		
-		System.out.println(" Digite sua idade: ");
-		idade = ler.nextInt();
+
 		
-		System.out.println(" Digite seu sexo:  1 - Masculino | 2 - Feminino | 3 - Outros ");
-		sexo = ler.nextInt();
-		
-		System.out.println(" Digite seu estado mental: 1 - Calmo | 2 - Nervoso | 3 - Agressivo ");
-		psicologico = ler.nextInt();
-		
-		while(pessoas < 3) {
-			if(psicologico == 1) {
-				numeroCalmos++;
-			}
-			else if(sexo == 2 && psicologico == 2) {
-				mulheresNervosas++;
-			}
-			else if(sexo == 1 && psicologico == 3) {
-				homensAgressivo++;
-			}
-			else if(sexo == 3 && psicologico == 1) {
-				outrosCalmos++;
-			}
-			else if (idade > 40 && psicologico == 2) {
-				quarentaNervosos++;
-			}
-			else if (idade < 18 && psicologico == 1) {
-				dezoitoCalmos++;
-			}
-			
-			pessoas++;
-			
+		while(pessoas <= 3) {
 			System.out.println(" Digite sua idade: ");
 			idade = ler.nextInt();
 			
@@ -49,6 +21,28 @@ public class Exercicio4 {
 			
 			System.out.println(" Digite seu estado mental: 1 - Calmo | 2 - Nervoso | 3 - Agressivo ");
 			psicologico = ler.nextInt();
+			if(psicologico == 1) {
+				numeroCalmos++;
+			}
+			if(sexo == 2 && psicologico == 2) {
+				mulheresNervosas++;
+			}
+			if(sexo == 1 && psicologico == 3) {
+				homensAgressivo++;
+			}
+			if(sexo == 3 && psicologico == 1) {
+				outrosCalmos++;
+			}
+			if (idade > 40 && psicologico == 2) {
+				quarentaNervosos++;
+			}
+			if (idade < 18 && psicologico == 1) {
+				dezoitoCalmos++;
+			}
+			
+			pessoas++;
+			
+
 		}
 		
 		System.out.println(" O número de pessoas calmas: " + numeroCalmos);
