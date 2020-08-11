@@ -30,7 +30,7 @@ public class Exercicio1 {
 		}
 		else {
 			System.out.println(" Você digitou um valor inválido ");
-		}
+		} 
 		
 	}
 }
