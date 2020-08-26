@@ -1,67 +1,62 @@
 /*
-Atividade 3
+3.	Uma tabela que represente um varejo, contendo: 
+•	ID do produto;
+•	Preço do produto;
+•	Categoria do produto ( Ex: quarto/sala / cozinha / banheiro)
+•	Nome produto;
 
-Crie um banco de dados para um registro de uma escola, onde o sistema trabalhará com as informações dos alunos deste registro dessa escola. 
+*Importante a tabela também precisa ter 5 dados;
 
-Crie uma tabela alunos/a e utilizando a habilidade de abstração e determine 5 atributos relevantes dos alunos/a para se trabalhar com o serviço dessa escola.
-
-Popule esta tabela com até 10 dados;
-
-Faça um select que retorne o/as alunos/a com a nota maior do que 7.
-
-Faça um select que retorne o/as alunos/a com a nota menor do que 7.
-
-Ao término atualize um dado desta tabela através de uma query de atualização.
-
-salve as querys para cada uma dos requisitos o exercício em um arquivo .SQL ou texto e coloque no seu GitHuB pessoal e compartilhe esta atividade.
+Para essa tabela considere fazer o SELECT que retorne:
+•	Todos os produtos que comecem com a letra “A”;
+•	Todos os produtos de uma determinada categoria;
+•	Todos os produtos entre $ 1.000 e 1.500 de uma determinada categoria; 
+•	Todos os produtos listados por uma categoria utilizando like
 */
 
--- Criando o Banco de dados
+-- Selecionando  o Banco 
 
-CREATE DATABASE ESCOLA;
+USE DB_DIVERSOS;
 
--- Selecionando para usar o Banco de dados
+-- Criando tabela
 
-USE ESCOLA;
+CREATE TABLE VAREJO(
+	ID_PRODUTO BIGINT AUTO_INCREMENT,
+    PRECO DOUBLE (10,2),
+    CATEGORIA_PRODUTO VARCHAR(10),
+    NOME_PRODUTO VARCHAR(15),  
+    PRIMARY KEY(ID_PRODUTO)
+);	
 
--- Criando a tabela 
+-- Importante a tabela também precisa ter 5 dados;
 
-CREATE TABLE ALUNOS (
-	ID_ALUNO BIGINT AUTO_INCREMENT,
-    NOME VARCHAR(30),
-    RG VARCHAR(11),
-    CPF VARCHAR(14),
-    NOME_MAE VARCHAR(30),
-    NOTA INT(2),
-    PRIMARY KEY(ID_ALUNO)
-);
+INSERT INTO VAREJO(PRECO,CATEGORIA_PRODUTO,NOME_PRODUTO) VALUES (100,"Quarto","Armario");
+INSERT INTO VAREJO(PRECO,CATEGORIA_PRODUTO,NOME_PRODUTO) VALUES (500,"Pessoal","Celular");
+INSERT INTO VAREJO(PRECO,CATEGORIA_PRODUTO,NOME_PRODUTO) VALUES (400,"Cozinha","Liquidificador");
+INSERT INTO VAREJO(PRECO,CATEGORIA_PRODUTO,NOME_PRODUTO) VALUES (200,"Escritório","Computador");
+INSERT INTO VAREJO(PRECO,CATEGORIA_PRODUTO,NOME_PRODUTO) VALUES (350,"Quarto","Sofá");
+INSERT INTO VAREJO(PRECO,CATEGORIA_PRODUTO,NOME_PRODUTO) VALUES (1200,"Pessoal","Notebook");
+INSERT INTO VAREJO(PRECO,CATEGORIA_PRODUTO,NOME_PRODUTO) VALUES (1300,"Cozinha","Panela");
 
-drop table alunos;
--- Popule esta tabela com até 10 dados;
 
-INSERT INTO ALUNOS(NOME,RG,CPF,NOME_MAE,NOTA) VALUES ("Bruno","50605194-8","434.341.038-21","Viviam",8);
-INSERT INTO ALUNOS(NOME,RG,CPF,NOME_MAE,NOTA) VALUES ("Viviam","50605194-8","434.341.038-21","Ana",1);
-INSERT INTO ALUNOS(NOME,RG,CPF,NOME_MAE,NOTA) VALUES ("Max","50605194-8","434.341.038-21","Beth",2);
-INSERT INTO ALUNOS(NOME,RG,CPF,NOME_MAE,NOTA) VALUES ("Clebio","50605194-8","434.341.038-21","Bia",3);
-INSERT INTO ALUNOS(NOME,RG,CPF,NOME_MAE,NOTA) VALUES ("Alex","50605194-8","434.341.038-21","Luiza",4);
-INSERT INTO ALUNOS(NOME,RG,CPF,NOME_MAE,NOTA) VALUES ("Agnes","50605194-8","434.341.038-21","Brenda",5);
-INSERT INTO ALUNOS(NOME,RG,CPF,NOME_MAE,NOTA) VALUES ("Beatriz","50605194-8","434.341.038-21","Estefany",6);
-INSERT INTO ALUNOS(NOME,RG,CPF,NOME_MAE,NOTA) VALUES ("Rafaella","50605194-8","434.341.038-21","Patricia",7);
-INSERT INTO ALUNOS(NOME,RG,CPF,NOME_MAE,NOTA) VALUES ("Camila","50605194-8","434.341.038-21","Rebeca",9);
-INSERT INTO ALUNOS(NOME,RG,CPF,NOME_MAE,NOTA) VALUES ("Marcelo","50605194-8","434.341.038-21","Isabella",10);
-INSERT INTO ALUNOS(NOME,RG,CPF,NOME_MAE,NOTA) VALUES ("Luis","50605194-8","434.341.038-21","Roberta",8.5);
 
--- Faça um select que retorne o/as alunos/a com a nota maior do que 7.
 
-SELECT * FROM ALUNOS WHERE NOTA >= 7;
+-- Todos os produtos que comecem com a letra “A”;
 
--- Faça um select que retorne o/as alunos/a com a nota menor do que 7.
+SELECT NOME_PRODUTO FROM VAREJO WHERE NOME_PRODUTO LIKE "a%";
 
-SELECT * FROM ALUNOS WHERE NOTA < 7;
+-- Todos os produtos de uma determinada categoria;
 
--- Ao término atualize um dado desta tabela através de uma query de atualização.
+SELECT * FROM VAREJO WHERE CATEGORIA_PRODUTO = "Quarto";
 
-UPDATE ALUNOS SET NOTA = 5 WHERE ID_ALUNO = 2;
+-- Todos os produtos entre $ 1.000 e 1.500 de uma determinada categoria; 
+
+SELECT * FROM VAREJO WHERE PRECO BETWEEN 1000 AND 1500 AND CATEGORIA_PRODUTO = "PESSOAL";
+
+-- Todos os produtos listados por uma categoria utilizando like
+
+SELECT * FROM VAREJO WHERE CATEGORIA_PRODUTO LIKE "%Pessoal%";
+
 
 
 

@@ -1,63 +1,51 @@
 /*
-Atividade 2
+2.	Uma tabela que represente um petshop, contendo: 
+•	ID do animal;
+•	Peso do animal;
+•	+ 5 informações que você considera importante;
 
-Crie um banco de dados para um e commerce, onde o sistema trabalhará com as informações dos produtos deste ecommerce. 
+*Importante a tabela também precisa ter 5 dados;
 
-Crie uma tabela produtos e utilizando a habilidade de abstração e determine 5 atributos relevantes dos produtos para se trabalhar com o serviço deste ecommerce.
+Para essa tabela considere fazer o SELECT que retorne:
+•	Todos os animais que pesam mais de  10 kilos;
+•	Todos os animais que pesam menos de 10 kilos;
+•	Todos os animais que pesam entre 10 a 30 kilos;
 
-Popule esta tabela com até 10 dados;
-
-Faça um select que retorne os produtos com o valor maior do que 500.
-
-Faça um select que retorne os produtos com o valor menor do que 500.
-
-Ao término atualize um dado desta tabela através de uma query de atualização.
-
-salve as querys para cada uma dos requisitos o exercício em um arquivo .SQL ou texto e coloque no seu GitHuB pessoal e compartilhe esta atividade.
 */
 
--- Criando o Banco de dados
+-- Selecionando o Banco
 
-CREATE DATABASE ECOMMERCE;
+USE DB_DIVERSOS;
 
--- Selecionando o Banco ECOMMERCE
+-- Criando tabela
 
-USE ECOMMERCE;
-
--- Criando a tabela produto
-
-CREATE TABLE PRODUTOS (
-	ID_PRODUTO BIGINT AUTO_INCREMENT,
-    NOME VARCHAR(30) NOT NULL,
-    VALOR DECIMAL(10,2) NOT NULL,
-    QUANTIDADE INT NOT NULL,
-    PRECO_CUSTO DECIMAL(10,2),
-    PRIMARY KEY(ID_PRODUTO)
+CREATE TABLE PETSHOP (
+	ID_ANIMAL BIGINT AUTO_INCREMENT,
+    NOME VARCHAR(20) NOT NULL,
+    PESO DECIMAL(4,2) NOT NULL,
+    NOME_DONO VARCHAR(30) NOT NULL,
+    CPF_DONO VARCHAR(16) NOT NULL,
+    PRIMARY KEY(ID_ANIMAL)    
 );
 
--- Popule esta tabela com até 15 dados;
+-- Importante a tabela também precisa ter 5 dados;
 
-INSERT INTO PRODUTOS(NOME,VALOR,QUANTIDADE,PRECO_CUSTO) VALUES ("Televisão",1500,10,1000);
-INSERT INTO PRODUTOS(NOME,VALOR,QUANTIDADE,PRECO_CUSTO) VALUES ("Celular",10000,10,3999.98);
-INSERT INTO PRODUTOS(NOME,VALOR,QUANTIDADE,PRECO_CUSTO) VALUES ("Radio",1500,10,300);
-INSERT INTO PRODUTOS(NOME,VALOR,QUANTIDADE,PRECO_CUSTO) VALUES ("Relogio",2000,10,1500);
-INSERT INTO PRODUTOS(NOME,VALOR,QUANTIDADE,PRECO_CUSTO) VALUES ("Computador",4000,10,2999.99);
-INSERT INTO PRODUTOS(NOME,VALOR,QUANTIDADE,PRECO_CUSTO) VALUES ("Notebook",5000,10,3459.99);
-INSERT INTO PRODUTOS(NOME,VALOR,QUANTIDADE,PRECO_CUSTO) VALUES ("Calculadora",50,10,20.99);
-INSERT INTO PRODUTOS(NOME,VALOR,QUANTIDADE,PRECO_CUSTO) VALUES ("Moden",100,10,50);
-INSERT INTO PRODUTOS(NOME,VALOR,QUANTIDADE,PRECO_CUSTO) VALUES ("Cadeira Gamer",1500,10,1000);
-INSERT INTO PRODUTOS(NOME,VALOR,QUANTIDADE,PRECO_CUSTO) VALUES ("Mouse",200,10,100);
-INSERT INTO PRODUTOS(NOME,VALOR,QUANTIDADE,PRECO_CUSTO) VALUES ("Teclado",500,10,200);
+INSERT INTO PETSHOP(NOME,PESO,NOME_DONO,CPF_DONO) VALUES ("BoB",40.50,"Bruno Profeta","434.341.038-21");
+INSERT INTO PETSHOP(NOME,PESO,NOME_DONO,CPF_DONO) VALUES ("Marley",20.50,"Bruno Profeta","434.341.038-21");
+INSERT INTO PETSHOP(NOME,PESO,NOME_DONO,CPF_DONO) VALUES ("Bela",8,"Bruno Profeta","434.341.038-21");
+INSERT INTO PETSHOP(NOME,PESO,NOME_DONO,CPF_DONO) VALUES ("Meg",3,"Bruno Profeta","434.341.038-21");
+INSERT INTO PETSHOP(NOME,PESO,NOME_DONO,CPF_DONO) VALUES ("Jack",17,"Bruno Profeta","434.341.038-21");
 
--- Faça um select que retorne os produtos com o valor maior do que 500.
+-- Todos os animais que pesam mais de  10 kilos;
 
-SELECT * FROM PRODUTOS WHERE VALOR >= 500;
+SELECT * FROM PETSHOP WHERE PESO > 10;
 
--- Faça um select que retorne os produtos com o valor menor do que 500.
+-- Todos os animais que pesam menos de 10 kilos;
 
-SELECT * FROM PRODUTOS WHERE VALOR < 500;
+SELECT * FROM PETSHOP WHERE PESO <= 10;
 
--- Ao término atualize um dado desta tabela através de uma query de atualização.
+-- Todos os animais que pesam entre 10 a 30 kilos;
 
-UPDATE PRODUTOS SET VALOR = 300 WHERE ID_PRODUTO = 10;
+SELECT * FROM PETSHOP WHERE PESO BETWEEN 10 AND 30;
+
 
