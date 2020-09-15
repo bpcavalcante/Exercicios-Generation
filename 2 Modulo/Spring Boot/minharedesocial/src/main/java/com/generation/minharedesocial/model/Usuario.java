@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -25,7 +26,8 @@ public class Usuario {
 	private String nome;
 	
 	@NotNull
-	private String login;
+	@Size(min = 5, max = 100)
+	private String usuario;
 	
 	@NotNull
 	private String senha;
@@ -50,14 +52,6 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
 	public String getSenha() {
 		return senha;
 	}
@@ -72,6 +66,14 @@ public class Usuario {
 
 	public void setPostagem(List<Postagem> postagem) {
 		this.postagem = postagem;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 	
 	
