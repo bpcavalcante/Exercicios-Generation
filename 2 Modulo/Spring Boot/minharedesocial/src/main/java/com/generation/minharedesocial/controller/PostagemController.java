@@ -21,7 +21,7 @@ import com.generation.minharedesocial.repository.PostagemRepository;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/postagem")
+@RequestMapping("/postagens")
 public class PostagemController {
 
 	@Autowired

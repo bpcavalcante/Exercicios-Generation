@@ -2,6 +2,7 @@ package com.generation.minharedesocial.seguranca;
 
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -13,6 +14,7 @@ import com.generation.minharedesocial.repository.UsuarioRepository;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService{
 
+	@Autowired ///Coloque o Autowired pelo amor de Deus!!!
 	private UsuarioRepository userRepository;
 	
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException{
